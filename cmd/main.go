@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/tech-xiwi/go-runner/runner"
 	"log"
 	"os"
 	"time"
+
+	"github.com/tech-xiwi/go-runner/runner"
 )
 
 type SimpleTask struct {
@@ -29,7 +30,7 @@ func (s SimpleTask) Run(r runner.Runner[runner.Task]) error {
 		log.Printf("%s run out with steps: %d\n", s.Id(), s.steps)
 	}()
 	if s.canRun(r) {
-		time.Sleep(time.Duration(s.id) * time.Second) //此处模拟用户的业务处理逻辑 1
+		time.Sleep(time.Duration(s.id) * time.Second) // 此处模拟用户的业务处理逻辑 1
 		s.steps++
 	} else {
 		log.Printf("%s run 1 meet status:%s quit\n", s.Id(), r.Status())
@@ -37,7 +38,7 @@ func (s SimpleTask) Run(r runner.Runner[runner.Task]) error {
 	}
 
 	if s.canRun(r) {
-		time.Sleep(time.Duration(s.id) * time.Second) //此处模拟用户的业务处理逻辑 2
+		time.Sleep(time.Duration(s.id) * time.Second) // 此处模拟用户的业务处理逻辑 2
 		s.steps++
 	} else {
 		log.Printf("%s run 2 meet status:%s quit\n", s.Id(), r.Status())
